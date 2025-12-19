@@ -15,6 +15,8 @@
                ;; HTML Template
                "djula"
 
+               "cl-dotenv"
+
                ;; for DB
                "datafly"
                "sxql")

@@ -2,7 +2,8 @@
 (defpackage incita-notes
   (:use :cl)
   (:import-from :incita-notes.config
-                :config)
+                :config
+                :load-config)
   (:import-from :clack
                 :clackup)
   (:export :start
@@ -21,6 +22,7 @@
       (restart-server ()
         :report "Restart the server"
         (stop))))
+  (load-config)
   (setf *handler*
         (apply #'clackup *appfile-path* args)))
 

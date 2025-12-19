@@ -12,11 +12,11 @@
            :with-connection))
 (in-package :incita-notes.db)
 
-(defun connection-settings (&optional (db :maindb))
-  (cdr (assoc db (config :databases))))
+(defun connection-settings ()
+  (config :database))
 
-(defun db (&optional (db :maindb))
-  (apply #'connect-cached (connection-settings db)))
+(defun db ()
+  (apply #'connect-cached (connection-settings)))
 
 (defmacro with-connection (conn &body body)
   `(let ((*connection* ,conn))
