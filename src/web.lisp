@@ -2,16 +2,12 @@
 (defpackage incita-notes.web
   (:use :cl
         :caveman2
-        :incita-notes.config
         :incita-notes.view
-        :incita-notes.db
-        :datafly
-        :sxql)
+        :incita-notes.controller.login)
+  (:import-from :incita-notes.config
+                :*template-directory*)
   (:export :*web*))
 (in-package :incita-notes.web)
-
-;; for @route annotation
-(syntax:use-syntax :annot)
 
 ;;
 ;; Application
@@ -24,7 +20,22 @@
 ;; Routing rules
 
 (defroute "/" ()
-  (render #P"index.html"))
+  (if (gethash :id *session*)
+      (redirect "/debug")
+      (redirect "/login")))
+
+
+(defroute ("/login" :method :POST) (&key |email| |password|)
+  (login |email| |password|))
+
+
+(defroute "/login" ()
+  (render #P"login/page.html"))
+
+(defroute "/debug" ()
+  (let ((test (gethash :id *session*)))
+    (format nil "~a" test)))
+
 
 ;;
 ;; Error pages

@@ -1,0 +1,76 @@
+:root {
+  --bg_colour: rgba(243, 243, 243, 0.938);
+  --txt_colour: rgb(27, 26, 29);
+  --wtxt_colour: rgb(238, 238, 238);
+  --accent_colour: rgb(47, 47, 47);
+  --secondary_colour: rgb(30, 55, 70);
+}
+
+.darkmode {
+  --bg_colour: rgba(12, 12, 12, 0.938);
+  --txt_colour: rgb(235, 235, 237);
+  --wtxt_colour: rgb(238, 238, 238);
+  --accent_colour: rgb(47, 47, 47);
+  --secondary_colour: rgb(30, 55, 70);
+}
+
+.login {
+  background-color: var(--bg_colour);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.login_email, .login_pw {
+  height: 2vh;
+  width: 307px;
+  background-color: var(--bg_colour);
+  padding: 12px;
+  color: var(--txt_colour);
+  font-size: 20px;
+  font-family: "arial";
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: var(--accent_colour);
+}
+.login_msg {
+  color: var(--txt_colour);
+  font-size: 35px;
+  font-family: "arial";
+}
+.login_btn {
+  color: var(--wtxt_colour);
+  font-size: 20px;
+  font-family: "arial";
+  padding: 9px;
+  margin-top: 5px;
+  background-color: var(--secondary_colour);
+  border: 0;
+  border-radius: 5px;
+}
+.login_lbl {
+  color: var(--txt_colour);
+  font-size: 17px;
+  font-family: "arial";
+}
+.login_field {
+  display: flex;
+  flex-direction: column;
+}
+.login_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}/*# sourceMappingURL=styles.css.map */

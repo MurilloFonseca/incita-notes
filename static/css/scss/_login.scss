@@ -1,0 +1,75 @@
+@use './var' as *;
+
+.login {
+  background-color: var(--bg_colour);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &_email, &_pw {
+    height: 2vh;
+    width: 307px;
+    background-color: var(--bg_colour);
+
+    padding: 12px;
+
+    @include txt(20px);
+
+    border: {
+      width: 1px;
+      radius: 5px;
+      color: var(--accent_colour);
+    }
+  }
+
+  &_msg {
+    @include txt(35px);
+  }
+
+  &_btn {
+    @include txt(20px, true);
+    padding: 9px;
+
+    margin-top: 5px;
+
+    background-color: var(--secondary_colour);
+
+    border: 0 {
+      radius: 5px
+    }
+
+    // &:hover {
+    //   background-color: darken(var(--secondary_colour), 5%);
+    //   color: darken(var(--wtxt_colour), 5%);
+    // }
+
+    // &:active {
+    //   background-color: darken(var(--secondary_colour), 10%);
+    //   color: darken(var(--wtxt_colour), 10%);
+    // }
+  }
+
+  &_lbl {
+    @include txt(17px);
+  }
+
+  &_field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+  }
+}

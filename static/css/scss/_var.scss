@@ -1,0 +1,28 @@
+:root {
+  --bg_colour: rgba(243, 243, 243, 0.938);
+  --txt_colour: rgb(27, 26, 29);
+  --wtxt_colour: rgb(238, 238, 238);
+  --accent_colour: rgb(47, 47, 47);
+  --secondary_colour: rgb(30, 55, 70);
+}
+
+.darkmode {
+  --bg_colour: rgba(12, 12, 12, 0.938);
+  --txt_colour: rgb(235, 235, 237);
+  --wtxt_colour: rgb(238, 238, 238);
+  --accent_colour: rgb(47, 47, 47);
+  --secondary_colour: rgb(30, 55, 70);
+}
+
+@mixin txt($size, $light_text: false) {
+  @if $light_text {
+    color: var(--wtxt_colour);
+  } @else {
+    color: var(--txt_colour);
+  }
+  
+  font: {
+    size: $size;
+    family: 'arial';
+  }
+}

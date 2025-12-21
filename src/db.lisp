@@ -3,21 +3,21 @@
   (:use :cl)
   (:import-from :incita-notes.config
                 :config)
-  (:import-from :datafly
-                :*connection*)
-  (:import-from :cl-dbi
-                :connect-cached)
-  (:export :connection-settings
-           :db
-           :with-connection))
+  (:import-from :incita-notes.model.user
+                :+user+)
+  (:import-from :mito
+                :connect-toplevel
+                :disconnect-toplevel
+                :ensure-table-exists
+                :migrate-table)
+  (:export :db-init
+           :close-connection))
 (in-package :incita-notes.db)
 
-(defun connection-settings ()
-  (config :database))
+(defun db-init ()
+  (apply #'connect-toplevel (config :database))
+  (mapcar #'ensure-table-exists '(+user+))
+  (mapcar #'migrate-table '(+user+)))
 
-(defun db ()
-  (apply #'connect-cached (connection-settings)))
-
-(defmacro with-connection (conn &body body)
-  `(let ((*connection* ,conn))
-     ,@body))
+(defun close-connection ()
+  (disconnect-toplevel))

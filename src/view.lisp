@@ -42,7 +42,6 @@
   (:use :cl)
   (:import-from :incita-notes.config
                 :config
-                :appenv
                 :developmentp
                 :productionp)
   (:import-from :caveman2

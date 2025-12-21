@@ -1,19 +1,15 @@
 (in-package :cl-user)
 (defpackage incita-notes.config
   (:use :cl)
-  (:import-from :envy
-                :config-env-var
-                :defconfig)
   (:import-from :cl-dotenv
                 :load-env)
-  (:export :config
-           :*application-root*
+  (:export :*application-root*
            :*static-directory*
            :*template-directory*
-           :appenv
+           :load-config
+           :config
            :developmentp
-           :productionp
-           :load-config))
+           :productionp))
 (in-package :incita-notes.config)
 
 (defparameter *application-root*   (asdf:system-source-directory :incita-notes))
@@ -27,30 +23,28 @@
     (.env:load-env env-file))
   
   ;; Database
-  (let ((db-name (get-env "DB_NAME" "null-name"))
-        (db-host (get-env "DB_HOST" "null-host"))
-        (db-port (parse-integer (get-env "DB_PORT" "0")))
-        (db-username (get-env "DB_USERNAME" "null-user"))
-        (db-password (get-env "DB_PASSWORD" "null-pw")))
-    (setf (gethash :database *config*)
+  (let ((db-name (get-env "DB_NAME" "incita-notes"))
+        (db-host (get-env "DB_HOST" "localhost"))
+        (db-port (parse-integer (get-env "DB_PORT" "5432")))
+        (db-username (get-env "DB_USERNAME" "postgres"))
+        (db-password (get-env "DB_PASSWORD" "")))
+    (setf (gethash :database *config*) 
           `(:postgres 
-             :database-name ,db-name
-             :host ,db-host
-             :port ,db-port
-             :username ,db-username
-             :password ,db-password)))
+            :database-name ,db-name 
+            :host ,db-host 
+            :port ,db-port 
+            :username ,db-username 
+            :password ,db-password)))
 
   ;; Server
-  (setf (gethash :app-port *config*) (parse-integer (get-env "APP_PORT" "0")))
+  (setf (gethash :app-host *config*) (get-env "APP_HOST" "localhost"))
+  (setf (gethash :app-port *config*) (parse-integer (get-env "APP_PORT" "5000")))
   (setf (gethash :app-server *config*) (get-env "APP_SERVER" "null-srv"))
-  (setf (gethash :app-env *config*) (get-env "APP_ENV" "null-env"))
-  
-  ;; JWT Secret
-  (setf (gethash :secret *config*) 
-        (ironclad:ascii-string-to-byte-array (get-env "JWT_SECRET" "placeholder"))))
+  (setf (gethash :app-env *config*) (get-env "APP_ENV" "null-env")))
 
 (defun get-env (key &optional default)
-  (or (uiop:getenv key) default))
+  (let ((var (or (uiop:getenv key) default)))
+    (string-trim '(#\space #\newline #\return #\linefeed) var)))
 
 (defun config (key)
   (gethash key *config*))
