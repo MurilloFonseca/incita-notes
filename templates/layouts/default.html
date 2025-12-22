@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br" class="{% if dark_mode %}dark{% endif %}">
 <head>
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" type="text/css" media="screen" href="/css/styles.css">
+  <script src="js/main.js"></script>
 </head>
-<body class="darkmode">
+<body>
   {% block content %}{% endblock %}
 </body>
 </html>

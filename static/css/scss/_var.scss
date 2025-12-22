@@ -1,28 +1,48 @@
+$bg-colour: rgba(253, 253, 253, 0.938);
+$txt-colour: rgb(22, 22, 22);
+$wtxt-colour: rgb(238, 238, 238);
+$accent-colour: #3D444D;
+$secondary-colour: rgb(38, 76, 100);
+
+$dark-bg-colour: #0D1117;
+$dark-txt-colour: rgb(235, 235, 237);
+
 :root {
-  --bg_colour: rgba(243, 243, 243, 0.938);
-  --txt_colour: rgb(27, 26, 29);
-  --wtxt_colour: rgb(238, 238, 238);
-  --accent_colour: rgb(47, 47, 47);
-  --secondary_colour: rgb(30, 55, 70);
-}
+  background-color: $bg-colour;
+  color: $txt-colour;
 
-.darkmode {
-  --bg_colour: rgba(12, 12, 12, 0.938);
-  --txt_colour: rgb(235, 235, 237);
-  --wtxt_colour: rgb(238, 238, 238);
-  --accent_colour: rgb(47, 47, 47);
-  --secondary_colour: rgb(30, 55, 70);
-}
-
-@mixin txt($size, $light_text: false) {
-  @if $light_text {
-    color: var(--wtxt_colour);
-  } @else {
-    color: var(--txt_colour);
+  &.dark {
+    background-color: $dark-bg-colour;
+    color: $dark-txt-colour;
   }
-  
+}
+
+@mixin body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+@mixin txt($size, $light-text: false) {
+  @if $light-text {
+    color: $wtxt-colour;
+  }
   font: {
     size: $size;
     family: 'arial';
+  }
+}
+
+@mixin btn($color, $background-color, $hover: 5%, $active: 10%) {
+  &:hover {
+    background-color: darken($background-color, $hover);
+    color: darken($color, $hover);
+  }
+
+  &:active {
+    background-color: darken($background-color, $active);
+    color: darken($color, $active);
   }
 }

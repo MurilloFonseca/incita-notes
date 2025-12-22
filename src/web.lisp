@@ -19,23 +19,32 @@
 ;;
 ;; Routing rules
 
+;; Main
 (defroute "/" ()
   (if (gethash :id *session*)
       (redirect "/debug")
       (redirect "/login")))
 
+;; Login
+(defroute "/login" ()
+  (login-page))
 
 (defroute ("/login" :method :POST) (&key |email| |password|)
   (login |email| |password|))
 
 
-(defroute "/login" ()
-  (render #P"login/page.html"))
 
 (defroute "/debug" ()
-  (let ((test (gethash :id *session*)))
-    (format nil "~a" test)))
+  (let ((ses-id (gethash :id *session*))
+        (ses-name (gethash :name *session*))
+        (ses-email (gethash :email *session*))
+        (ses-mode (gethash :dark-mode *session*)))
+    (render "test.html" (list :id ses-id :name ses-name :email ses-email :darkmode ses-mode))))
 
+;; dark mode
+(defroute ("/dark-mode" :method :PUT) ()
+  (setf (gethash :dark-mode *session*) (not (gethash :dark-mode *session*)))
+  (render-json nil))
 
 ;;
 ;; Error pages

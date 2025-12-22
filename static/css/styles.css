@@ -1,21 +1,13 @@
 :root {
-  --bg_colour: rgba(243, 243, 243, 0.938);
-  --txt_colour: rgb(27, 26, 29);
-  --wtxt_colour: rgb(238, 238, 238);
-  --accent_colour: rgb(47, 47, 47);
-  --secondary_colour: rgb(30, 55, 70);
+  background-color: rgba(253, 253, 253, 0.938);
+  color: rgb(22, 22, 22);
 }
-
-.darkmode {
-  --bg_colour: rgba(12, 12, 12, 0.938);
-  --txt_colour: rgb(235, 235, 237);
-  --wtxt_colour: rgb(238, 238, 238);
-  --accent_colour: rgb(47, 47, 47);
-  --secondary_colour: rgb(30, 55, 70);
+:root.dark {
+  background-color: #0D1117;
+  color: rgb(235, 235, 237);
 }
 
 .login {
-  background-color: var(--bg_colour);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,47 +19,114 @@
   flex-direction: column;
   gap: 15px;
 }
-.login_email, .login_pw {
-  height: 2vh;
-  width: 307px;
-  background-color: var(--bg_colour);
-  padding: 12px;
-  color: var(--txt_colour);
-  font-size: 20px;
-  font-family: "arial";
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: var(--accent_colour);
-}
-.login_msg {
-  color: var(--txt_colour);
-  font-size: 35px;
-  font-family: "arial";
-}
-.login_btn {
-  color: var(--wtxt_colour);
-  font-size: 20px;
-  font-family: "arial";
-  padding: 9px;
-  margin-top: 5px;
-  background-color: var(--secondary_colour);
-  border: 0;
-  border-radius: 5px;
-}
-.login_lbl {
-  color: var(--txt_colour);
-  font-size: 17px;
-  font-family: "arial";
-}
 .login_field {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
-.login_container {
+.login_label {
+  font-size: 14px;
+  font-family: "arial";
+}
+.login_input {
+  font-size: 20px;
+  font-family: "arial";
+  background-color: inherit;
+  color: inherit;
+  height: 2vh;
+  width: 307px;
+  padding: 12px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: #3D444D;
+}
+.login_btn {
+  color: rgb(238, 238, 238);
+  font-size: 14px;
+  font-family: "arial";
+  background-color: rgb(38, 76, 100);
+  padding: 12px;
+  margin-top: 5px;
+  border: 0;
+  border-radius: 5px;
+}
+.login_btn:hover {
+  background-color: rgb(30.9782608696, 61.9565217391, 81.5217391304);
+  color: rgb(225.25, 225.25, 225.25);
+}
+.login_btn:active {
+  background-color: rgb(23.9565217391, 47.9130434783, 63.0434782609);
+  color: rgb(212.5, 212.5, 212.5);
+}
+
+.enter {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10vh;
+}
+.enter_msg {
+  font-size: 27px;
+  font-family: "arial";
+}
+
+.header {
+  width: 96vw;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.page_title {
+  font-size: 25px;
+  font-family: "arial";
+  margin: 0;
+}
+
+.btn, .btn_light, .btn_dark {
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: 50%;
+}
+.btn_dark {
+  background-color: rgb(31.4166666667, 41.0833333333, 55.5833333333);
+}
+.btn_dark:hover {
+  background-color: rgb(22.2083333333, 29.0416666667, 39.2916666667);
+  color: rgb(242.25, 242.25, 242.25);
+}
+.btn_dark:active {
+  background-color: #0d1117;
+  color: rgb(229.5, 229.5, 229.5);
+}
+.btn_light {
+  background-color: rgba(214.75, 214.75, 214.75, 0.938);
+}
+.btn_light:hover {
+  background-color: rgba(202, 202, 202, 0.938);
+  color: rgb(242.25, 242.25, 242.25);
+}
+.btn_light:active {
+  background-color: rgba(189.25, 189.25, 189.25, 0.938);
+  color: rgb(229.5, 229.5, 229.5);
+}
+.btn_menu {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 body {

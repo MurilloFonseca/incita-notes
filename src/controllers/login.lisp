@@ -5,9 +5,12 @@
   (:import-from :caveman2
                 :*session*
                 :redirect)
+  (:import-from :incita-notes.view
+                :render)
   (:import-from :mito
                 :object-id)
-  (:export :login))
+  (:export :login
+           :login-page))
 (in-package :incita-notes.controller.login)
 
 (defun login (email password)
@@ -18,3 +21,8 @@
              (setf (gethash :name *session*) (user-name user))
              (redirect "/debug")) ;; TODO: Change later
       (redirect "/login"))))
+
+(defun login-page ()
+  (let ((id (gethash :id *session*)))
+    (if id (redirect "/debug")
+           (render #P"login/page.html"))))
