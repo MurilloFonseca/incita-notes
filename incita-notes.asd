@@ -18,7 +18,18 @@
                "mito"
                "mito-auth"
                "datafly"
-               "sxql")
+               "sxql"
+               
+               ;; markdown parser
+               "3bmd"
+               "3bmd-ext-math"
+               "3bmd-ext-code-blocks"
+               "3bmd-ext-definition-lists"
+               "3bmd-ext-tables"
+               "3bmd-youtube"
+               
+               ;; websocket
+               "websocket-driver")
   :components ((:module "src"
                 :components
                 ((:file "main" :depends-on ("config" "view" "db" "models"))
@@ -29,5 +40,6 @@
                  (:module "models"
                   :components ((:file "user")))
                  (:module "controllers" :depends-on ("models")
-                  :components ((:file "login"))))))
+                  :components ((:file "login")
+                               (:file "register"))))))
   :description "Aplicativo de notas")

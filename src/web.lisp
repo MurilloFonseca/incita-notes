@@ -2,10 +2,13 @@
 (defpackage incita-notes.web
   (:use :cl
         :caveman2
-        :incita-notes.view
-        :incita-notes.controller.login)
+        :incita-notes.controller.login
+        :incita-notes.controller.register)
   (:import-from :incita-notes.config
                 :*template-directory*)
+  (:import-from :incita-notes.view
+                :render-json
+                :render)
   (:export :*web*))
 (in-package :incita-notes.web)
 
@@ -30,7 +33,15 @@
   (login-page))
 
 (defroute ("/login" :method :POST) (&key |email| |password|)
-  (login |email| |password|))
+  (make-login |email| |password|))
+
+;; Register
+(defroute "/register" ()
+  (register-page))
+
+(defroute ("/register" :method :POST) (&key |name| |email| |password|)
+  (register-user |name| |email| |password|))
+
 
 
 

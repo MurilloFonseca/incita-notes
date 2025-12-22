@@ -1,0 +1,53 @@
+@use './var' as *;
+
+.register {
+  @include body;
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &_field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &_label {
+    @include txt(14px);
+  }
+
+  &_input {
+    @include txt(20px);
+
+    background-color: inherit;
+    color: inherit;
+
+    height: 2vh;
+    width: 307px;
+    padding: 12px;
+
+    border: {
+      style: solid;
+      width: 1px;
+      radius: 5px;
+      color: $accent-colour;
+    }
+  }
+
+  &_btn {
+    @include txt(14px, true);
+    @include btn($wtxt-colour, $secondary-colour);
+
+    background-color: $secondary-colour;
+
+    padding: 12px;
+    margin-top: 5px;
+    
+    border: 0 {
+      radius: 5px
+    }
+  }
+}

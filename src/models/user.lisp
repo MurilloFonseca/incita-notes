@@ -10,7 +10,9 @@
            :user-id
            
            :create-user
-           :auth-user))
+           :auth-user
+           :get-user-by-id
+           :get-user-by-email))
 (in-package :incita-notes.model.user)
 
 (deftable +user+ (has-secure-password)
@@ -20,7 +22,7 @@
           :accessor user-email))
   (:unique-keys email))
 
-(defun create-user (&key name email password)
+(defun create-user (name email password)
   (create-dao '+user+ :name name :email email :password password))
 
 (defun auth-user (email password)
@@ -28,4 +30,8 @@
     (if user (values (auth user password) user)
              (values nil nil))))
 
+(defun get-user-by-id (id)
+  (find-dao '+user+ :id id))
 
+(defun get-user-by-email (email)
+  (find-dao '+user+ :email email))

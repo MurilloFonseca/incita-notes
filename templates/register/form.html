@@ -1,0 +1,21 @@
+{% extends "layouts/enter-screen.html" %}
+
+{% block msg %} Cadastre-se {% endblock msg %}
+
+{% block form %}
+<form action="/register" method="POST" class="register_form">
+  <div class="register_field">
+    <label for="name" class="register_label">Nome:</label>
+    <input type="text" id="name" class="register_input" name="name" autocomplete="name">
+  </div>
+  <div class="register_field">
+    <label for="email" class="register_label">Email:</label>
+    <input type="email" id="email" class="register_input" name="email" autocomplete="email">
+  </div>
+  <div class="register_field">
+    <label for="password" class="register_label">Senha:</label>
+    <input id="password" class="register_input" type="password" name="password" autocomplete="off">
+  </div>
+  <button class="register_btn" type="submit">Cadastrar</button>
+</form>
+{% endblock form %}
