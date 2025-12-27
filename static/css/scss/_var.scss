@@ -1,11 +1,16 @@
-$bg-colour: rgba(253, 253, 253, 0.938);
+$bg-colour: #f8fafd;
 $txt-colour: rgb(22, 22, 22);
-$wtxt-colour: rgb(238, 238, 238);
-$accent-colour: #3D444D;
-$secondary-colour: rgb(38, 76, 100);
+$accent-colour: #d1d9e0;
+$text-field-colour: #ffffff;
+$secondary-colour: #f0f4f9;
 
-$dark-bg-colour: #0D1117;
-$dark-txt-colour: rgb(235, 235, 237);
+$dark-bg-colour: #131314;
+$dark-txt-colour: #f0f6fc;
+$dark-accent-colour: #3d444d;
+$dark-text-field-colour: #282A2C;
+$dark-secondary-colour: #1e1f20;
+
+$wtxt-colour: rgb(238, 238, 238);
 
 :root {
   background-color: $bg-colour;
@@ -36,13 +41,41 @@ $dark-txt-colour: rgb(235, 235, 237);
 }
 
 @mixin btn($color, $background-color, $hover: 5%, $active: 10%) {
+  cursor: pointer;
+
+  background-color: $background-color;
+  color: $color;
+  fill: $color;
+
   &:hover {
     background-color: darken($background-color, $hover);
     color: darken($color, $hover);
+    fill: darken($color, $hover);
   }
-
+  
   &:active {
     background-color: darken($background-color, $active);
     color: darken($color, $active);
+    fill: darken($color, $active);
+  }
+}
+
+@mixin icon-btn {
+  @include btn($txt-colour, transparent, $hover: 15%, $active: 23%);
+
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+
+  &.dark {
+    @include btn($dark-txt-colour, transparent, $hover: 15%, $active: 23%);
+  }
+}
+
+@mixin hideable {
+  &.hidden {
+    display: none;
   }
 }

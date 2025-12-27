@@ -22,7 +22,7 @@
 
 (defparameter *template-registry* (make-hash-table :test 'equal))
 
-(defun %render% (template-path &optional env)
+(defun render (template-path &optional env)
   (let ((template (gethash template-path *template-registry*)))
     (unless template
       (setf template (djula:compile-template* (princ-to-string template-path)))
@@ -30,11 +30,6 @@
     (apply #'djula:render-template*
            template nil
            env)))
-
-(defun render (template-path &optional env)
-  (let* ((dark-mode-p (gethash :dark-mode *session*))
-         (darkmode (list :dark_mode dark-mode-p)))
-    (%render% template-path (append darkmode env))))
 
 (defun render-json (object)
   (setf (getf (response-headers *response*) :content-type) "application/json")
@@ -47,8 +42,8 @@
   (:use :cl)
   (:import-from :incita-notes.config
                 :config
-                :developmentp
-                :productionp)
+                :development-p
+                :production-p)
   (:import-from :caveman2
                 :url-for))
 

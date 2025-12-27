@@ -147,13 +147,13 @@ No REPL:
 ### Executar a aplicação
 
 ```bash
-sbcl --eval "(ql:quickload :incita-notes)" --eval "(incita-notes:start :port 5000)"
+sbcl --eval "(ql:quickload :incita-notes)" --eval "(incita-notes:start)"
 ```
 
 Ou no REPL:
 ```lisp
 (ql:quickload :incita-notes)
-(incita-notes:start :port 5000)
+(incita-notes:start)
 ```
 
 A aplicação estará disponível em `http://localhost:5000`

@@ -1,0 +1,9 @@
+<header class="header">
+  {% if show_sidebar %}
+    {% include "layouts/header/sidebar.html" %}
+  {% endif %}
+
+  <p class="header_title"> {{ page_title | default: "" }} </p>
+
+  {% include "layouts/header/theme-button.html" %}
+</header>

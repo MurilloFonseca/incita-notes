@@ -1,7 +1,7 @@
 (in-package :cl-user)
-(defpackage incita-notes.controller.register
+(defpackage incita-notes.controllers.register
   (:use :cl
-        :incita-notes.model.user)
+        :incita-notes.models.user)
   (:import-from :caveman2
                 :*session*
                 :redirect)
@@ -9,23 +9,26 @@
                 :render)
   (:import-from :mito
                 :object-id)
+  (:import-from :incita-notes.utils
+                :get-session
+                :set-session)
   (:export :register-page
            :register-user))
-(in-package :incita-notes.controller.register)
+(in-package :incita-notes.controllers.register)
 
 (defun register-page ()
-  (let ((id (gethash :id *session*)))
-    (if id (redirect "/debug")
+  (let ((id (get-session :id)))
+    (if id (redirect "/page")
            (render #P"register/page.html"))))
 
 (defun register-user (name email password)
   (let ((user (get-user-by-email email)))
     (if user (redirect "/login")
       (let ((new-user (create-user name email password)))
-        (setf (gethash :id *session*) (object-id new-user))
-        (setf (gethash :email *session*) (user-email new-user))
-        (setf (gethash :name *session*) (user-name new-user))
-        (redirect "/debug")))))
+        (set-session :id (object-id new-user))
+        (set-session :email (user-email new-user))
+        (set-session :name (user-name new-user))
+        (redirect "/page")))))
 
 
 

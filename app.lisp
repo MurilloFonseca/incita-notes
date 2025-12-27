@@ -11,7 +11,7 @@
                 :*web*)
   (:import-from :incita-notes.config
                 :config
-                :productionp
+                :production-p
                 :*static-directory*))
 (in-package :incita-notes.app)
 
@@ -22,11 +22,11 @@
               path
               nil))
   :root *static-directory*)
- (if (productionp)
+ (if (production-p)
      nil
      :accesslog)
  :session
- (if (productionp)
+ (if (production-p)
      nil
      (lambda (app)
        (lambda (env)

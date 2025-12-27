@@ -3,14 +3,13 @@
   (:use :cl)
   (:import-from :incita-notes.config
                 :config
-                :load-config)
+                :load-config
+                :development-p)
   (:import-from :clack
                 :clackup)
   (:import-from :incita-notes.db
                 :db-init
                 :close-connection)
-  (:import-from :incita-notes.model.user
-                :+user+)
   (:export :start
            :stop))
 (in-package :incita-notes)
@@ -21,7 +20,7 @@
 (defvar *handler* nil)
 
 (defun start (&rest args &key server port debug &allow-other-keys)
-  (declare (ignore server port debug))
+  (declare (ignore args server port debug))
 
   ;; Server already running
   (when *handler*
@@ -35,7 +34,7 @@
     (load-config)
     (db-init)
     (setf *handler*
-          (apply #'clackup *appfile-path* args))))
+          (apply #'clackup *appfile-path* (list :host (config :app-host) :port (config :app-port) :server (config :app-server) :debug (development-p))))))
 
 (defun stop ()
   (prog1

@@ -3,8 +3,10 @@
   (:use :cl)
   (:import-from :incita-notes.config
                 :config)
-  (:import-from :incita-notes.model.user
+  (:import-from :incita-notes.models.user
                 :+user+)
+  (:import-from :incita-notes.models.page
+                :+user-page+)
   (:import-from :mito
                 :connect-toplevel
                 :disconnect-toplevel
@@ -16,8 +18,8 @@
 
 (defun db-init ()
   (apply #'connect-toplevel (config :database))
-  (mapcar #'ensure-table-exists '(+user+))
-  (mapcar #'migrate-table '(+user+)))
+  (mapcar #'ensure-table-exists '(+user+ +user-page+))
+  (mapcar #'migrate-table '(+user+ +user-page+)))
 
 (defun close-connection ()
   (disconnect-toplevel))

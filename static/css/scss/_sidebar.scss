@@ -1,0 +1,60 @@
+@use 'var' as *;
+
+.sidebar {
+  @include hideable;
+
+  background-color: $secondary-colour;
+
+  width: 25vw;
+  height: 100vh;
+  align-self: baseline;
+  z-index: 2;
+  margin-top: -12px;
+
+  &.dark {
+    background-color: $dark-secondary-colour;
+  }
+
+  &_top {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    &_right {
+      display: flex;
+      flex-direction: row;
+      margin-right: 10px;
+
+      gap: 10px;
+    }
+  }
+
+  &_close {
+    @include icon-btn;
+
+    margin-left: 30px;
+    height: 30px;
+    width: 30px;
+  }
+
+  &_name {
+    @include txt(17px);
+
+    background-color: inherit;
+    color: inherit;
+    border: 0;
+
+    &_edit, &_confirm {
+      @include icon-btn;
+      @include hideable;
+    }
+  }
+
+  &_body {
+    margin-top: 20px;
+  }
+}
+
+

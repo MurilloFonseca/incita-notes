@@ -1,0 +1,26 @@
+<div class="group" id="{{group_id}}">
+  <div class="group_header">
+    <div class="group_header_left">
+      <button class="group_header_chevron">
+        <span class="group_header_chevron_down"> {% include "svg/keyboard-arrow-down.svg" %} </span>
+        <span class="group_header_chevron_right hidden"> {% include "svg/keyboard-arrow-right.svg" %} </span>
+      </button>
+      <span class="group_title"> {{ group_title }} </span>
+    </div>
+    <div class="group_header_right">
+      <button class="group_header_add">
+        {% include "svg/add.svg" %}
+      </button>
+    </div>
+  </div>
+  <div class="group_body">
+    {% for page in pages %}
+      <div class="group_page">
+        <span class="group_page_title"> {{ page.title }} </span>
+        <button class="group_page_options">
+          {% include "svg/more-vert.svg" %}
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+</div>

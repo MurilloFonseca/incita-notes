@@ -35,19 +35,32 @@
       radius: 5px;
       color: $accent-colour;
     }
+
+    &.dark {
+      border-color: $dark-accent-colour;
+    }
   }
 
   &_btn {
     @include txt(14px, true);
-    @include btn($wtxt-colour, $secondary-colour);
+    @include btn($wtxt-colour, rgb(38, 76, 100));
 
-    background-color: $secondary-colour;
+    background-color: rgb(38, 76, 100);
 
     padding: 12px;
     margin-top: 5px;
     
     border: 0 {
       radius: 5px
+    }
+  }
+
+  &_link {
+    text-decoration: none;
+    color: #4493F8;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

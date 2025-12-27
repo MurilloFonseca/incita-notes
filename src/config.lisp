@@ -8,8 +8,8 @@
            :*template-directory*
            :load-config
            :config
-           :developmentp
-           :productionp))
+           :development-p
+           :production-p))
 (in-package :incita-notes.config)
 
 (defparameter *application-root*   (asdf:system-source-directory :incita-notes))
@@ -39,7 +39,7 @@
   ;; Server
   (setf (gethash :app-host *config*) (get-env "APP_HOST" "localhost"))
   (setf (gethash :app-port *config*) (parse-integer (get-env "APP_PORT" "5000")))
-  (setf (gethash :app-server *config*) (get-env "APP_SERVER" "null-srv"))
+  (setf (gethash :app-server *config*) (alexandria:make-keyword (string-upcase (get-env "APP_SERVER" "null-srv"))))
   (setf (gethash :app-env *config*) (get-env "APP_ENV" "null-env")))
 
 (defun get-env (key &optional default)
@@ -49,8 +49,8 @@
 (defun config (key)
   (gethash key *config*))
 
-(defun developmentp ()
+(defun development-p ()
   (string= (config :app-env) "development"))
 
-(defun productionp ()
+(defun production-p ()
   (string= (config :app-env) "production"))

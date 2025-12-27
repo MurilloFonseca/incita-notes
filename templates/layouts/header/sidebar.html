@@ -1,0 +1,28 @@
+<button class="header_menu hidden">
+  {% include "svg/menu.svg" %}
+</button>
+
+<div class="sidebar" >
+  <div class="sidebar_top">
+    <button class="sidebar_close">
+      {% include "svg/close.svg" %}
+    </button>
+
+    <div class="sidebar_top_right">
+      <input type="text" value="{{username}}" class="sidebar_name" disabled>
+      <button class="sidebar_name_edit"> {% include "svg/edit.svg" %} </button>
+      <button class="sidebar_name_confirm hidden"> {% include "svg/check.svg" %} </button>
+    </div>
+  </div>
+  <div class="sidebar_body">
+
+    {% include "layouts/header/group.html" :group_title "personal" :group_id "personal" %}
+    
+    {% for group in groups %}
+    
+      {% include "layouts/header/group.html" :group_title {{group.title}} :pages {{group.pages}} only %}
+
+    {% endfor %}
+
+  </div>
+</div>

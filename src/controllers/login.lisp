@@ -1,7 +1,7 @@
 (in-package :cl-user)
-(defpackage incita-notes.controller.login
+(defpackage incita-notes.controllers.login
   (:use :cl
-        :incita-notes.model.user)
+        :incita-notes.models.user)
   (:import-from :caveman2
                 :*session*
                 :redirect)
@@ -9,20 +9,23 @@
                 :render)
   (:import-from :mito
                 :object-id)
+  (:import-from :incita-notes.utils
+                :get-session
+                :set-session)
   (:export :make-login
            :login-page))
-(in-package :incita-notes.controller.login)
+(in-package :incita-notes.controllers.login)
 
 (defun login-page ()
-  (let ((id (gethash :id *session*)))
-    (if id (redirect "/debug")
+  (let ((id (get-session :id)))
+    (if id (redirect "/page")
            (render #P"login/page.html"))))
 
 (defun make-login (email password)
   (multiple-value-bind (auth-p user) (auth-user email password)
     (if auth-p
-      (progn (setf (gethash :id *session*) (object-id user))
-             (setf (gethash :email *session*) (user-email user))
-             (setf (gethash :name *session*) (user-name user))
-             (redirect "/debug")) ;; TODO: Change later
+      (progn (set-session :id (object-id user))
+             (set-session :email (user-email user))
+             (set-session :name (user-name user))
+             (redirect "/page"))
       (redirect "/login"))))

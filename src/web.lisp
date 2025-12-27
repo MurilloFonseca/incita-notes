@@ -2,13 +2,16 @@
 (defpackage incita-notes.web
   (:use :cl
         :caveman2
-        :incita-notes.controller.login
-        :incita-notes.controller.register)
+        :incita-notes.controllers.login
+        :incita-notes.controllers.register
+        :incita-notes.controllers.page)
   (:import-from :incita-notes.config
                 :*template-directory*)
   (:import-from :incita-notes.view
                 :render-json
                 :render)
+  (:import-from :incita-notes.utils
+                 :get-session)
   (:export :*web*))
 (in-package :incita-notes.web)
 
@@ -24,7 +27,7 @@
 
 ;; Main
 (defroute "/" ()
-  (if (gethash :id *session*)
+  (if (get-session :id)
       (redirect "/debug")
       (redirect "/login")))
 
@@ -43,23 +46,31 @@
   (register-user |name| |email| |password|))
 
 
+;; Page
+(defroute "/page" ()
+  (default-page))
 
 
+
+
+
+;;
+;; Other
+
+;; TODO: Remove later
 (defroute "/debug" ()
   (let ((ses-id (gethash :id *session*))
         (ses-name (gethash :name *session*))
-        (ses-email (gethash :email *session*))
-        (ses-mode (gethash :dark-mode *session*)))
-    (render "test.html" (list :id ses-id :name ses-name :email ses-email :darkmode ses-mode))))
+        (ses-email (gethash :email *session*)))
+    (render "debug.html" (list :id ses-id :name ses-name :email ses-email))))
 
-;; dark mode
-(defroute ("/dark-mode" :method :PUT) ()
-  (setf (gethash :dark-mode *session*) (not (gethash :dark-mode *session*)))
-  (render-json nil))
+(defroute ("/update-name" :method :PUT) (&key |name|)
+  (save-name |name|))
 
 ;;
 ;; Error pages
 
+;; 404
 (defmethod on-exception ((app <web>) (code (eql 404)))
   (declare (ignore app))
   (merge-pathnames #P"_errors/404.html"
