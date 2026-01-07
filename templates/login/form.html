@@ -1,19 +1,15 @@
 {% extends "layouts/enter-screen.html" %}
 
-{% block msg %} Bem-Vindo! {% endblock msg %} 
+{% block msg %} Bem-Vindo! {% endblock msg %}
 
-{% block form %}
-<form action="/login" method="POST" class="login_form">
-  <div class="login_field">
-    <label for="email" class="login_label">Email:</label>
-    <input type="email" id="email" class="login_input" name="email" autocomplete="email">
-  </div>
-  <div class="login_field">
-    <label for="password" class="login_label">Senha:</label>
-    <input id="password" class="login_input" type="password" name="password" autocomplete="off">
-  </div>
-  <button class="login_btn" type="submit">Entrar</button>
+{% block form %} 
+
+<form action="/login" method="POST" class="form">
+  {% include "components/input-field.html" :input_id "email" :input_label "Email:" %}
+  {% include "components/input-field.html" :input_id "password" :input_auto "off" :input_label "Senha:" %}
+  <button class="btn" type="submit"> Entrar </button>
 </form>
+
 {% endblock form %}
 
-{% block bottom %} Não tem uma conta? <a class="login_link" href="/register">Cadastrar</a> {% endblock bottom %}
+{% block bottom %} Não tem uma conta? <a class="link" href="/register">Cadastrar</a> {% endblock bottom %}

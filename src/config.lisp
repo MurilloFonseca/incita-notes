@@ -12,8 +12,8 @@
            :production-p))
 (in-package :incita-notes.config)
 
-(defparameter *application-root*   (asdf:system-source-directory :incita-notes))
-(defparameter *static-directory*   (merge-pathnames #P"static/" *application-root*))
+(defparameter *application-root* (asdf:system-source-directory :incita-notes))
+(defparameter *static-directory* (merge-pathnames #P"static/" *application-root*))
 (defparameter *template-directory* (merge-pathnames #P"templates/" *application-root*))
 
 (defvar *config* (make-hash-table :test #'equal))
@@ -21,7 +21,7 @@
 (defun load-config (&optional (env-file ".env"))
   (when (probe-file env-file)
     (.env:load-env env-file))
-  
+
   ;; Database
   (let ((db-name (get-env "DB_NAME" "incita-notes"))
         (db-host (get-env "DB_HOST" "localhost"))

@@ -1,0 +1,43 @@
+@use 'sass:color';
+@use 'colours' as *;
+
+@mixin btn($color, $bg-color, $hover: -5%, $active: -10%) {
+  @include body;
+
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $bg-color;
+  color: $color;
+  fill: $color;
+
+  &:hover {
+    background-color: color.adjust($bg-color, $lightness: $hover);
+    color: color.adjust($color, $lightness: $hover);
+    fill: color.adjust($color, $lightness: $hover);
+  }
+
+  &:active {
+    background-color: color.adjust($bg-color, $lightness: $active);
+    color: color.adjust($color, $lightness: $active);
+    fill: color.adjust($color, $lightness: $hover);
+  }
+}
+
+@mixin body($direction: column, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin icon-btn($bg-color: transparent) {
+  @include btn(colour(text, light), $bg-color, $hover: -15%, $active: -23%);
+
+  padding: 0;
+  border: 0;
+
+  &.dark {
+    @include btn(colour(text, dark), $bg-color, $hover: -15%, $active: -23%);
+  }
+}

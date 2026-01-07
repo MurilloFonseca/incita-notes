@@ -1,3 +1,4 @@
-<div class="page_main push">
+<div class="page-main" :class="{'push': sidebarOpen, 'dark': darkmode}">
+  <p class="title" id="page-title" hx-swap-oob="true"> {{page_title}} </p>
   Lorem Ipsum
 </div>

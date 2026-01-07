@@ -3,21 +3,14 @@
 {% block msg %} Cadastre-se {% endblock msg %}
 
 {% block form %}
-<form action="/register" method="POST" class="register_form">
-  <div class="register_field">
-    <label for="name" class="register_label">Nome:</label>
-    <input type="text" id="name" class="register_input" name="name" autocomplete="name">
-  </div>
-  <div class="register_field">
-    <label for="email" class="register_label">Email:</label>
-    <input type="email" id="email" class="register_input" name="email" autocomplete="email">
-  </div>
-  <div class="register_field">
-    <label for="password" class="register_label">Senha:</label>
-    <input id="password" class="register_input" type="password" name="password" autocomplete="off">
-  </div>
-  <button class="register_btn" type="submit">Cadastrar</button>
+
+<form action="/register" method="POST" class="form">
+  {% include "components/input-field.html" :input_id "name" :input_type "text" :input_label "Nome:" %}
+  {% include "components/input-field.html" :input_id "email" :input_label "Email:" %}
+  {% include "components/input-field.html" :input_id "password" :input_auto "off" :input_label "Senha:" %}
+  <button class="btn" type="submit"> Cadastrar </button>
 </form>
+
 {% endblock form %}
 
-{% block bottom %}Já tem uma conta? <a class="register_link" href="/login">Entrar</a>{% endblock bottom %}
+{% block bottom %}Já tem uma conta? <a class="link" href="/login">Entrar</a>{% endblock bottom %}

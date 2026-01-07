@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+
+:root {
+  background-color: colour(background, light);
+  color: colour(text, light);
+
+  &.dark {
+    background-color: colour(background, dark);
+    color: colour(text, dark);
+  }
+}

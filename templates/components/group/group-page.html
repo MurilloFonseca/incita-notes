@@ -1,0 +1,6 @@
+<div class="group-page" hx-get="/page/{{page_id}}" hx-target=".page-main" hx-swap="outerHTML" :class="{'dark': darkmode}">
+  <span class="title"> {{ page_title }} </span>
+  <button class="options" :class="{'dark': darkmode}">
+    {% include "svg/more-vert.svg" %}
+  </button>
+</div>

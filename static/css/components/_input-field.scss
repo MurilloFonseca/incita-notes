@@ -1,0 +1,31 @@
+@use '../abstracts' as *;
+
+.input-field {
+  @include body($gap: 4px);
+
+  .label {
+    @include txt;
+  }
+
+  .input {
+    @include input-txt;
+
+    background-color: inherit;
+    color: inherit;
+
+    height: 2vh;
+    width: 307px;
+    padding: 12px;
+
+    border: {
+      style: solid;
+      width: 1px;
+      radius: 5px;
+      color: colour(accent, light);
+    }
+
+    &.dark {
+      border-color: colour(accent, dark);
+    }
+  }
+}

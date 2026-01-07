@@ -1,5 +1,6 @@
 import { setLocalStorage } from "./utils.js"
 
+// showGroup
 const setGroup = (id) => {
   document.querySelector(`#${id} .group_body`).classList.toggle('hidden')
   document.querySelector(`#${id} .group_header_chevron_right`).classList.toggle('hidden')
@@ -32,4 +33,34 @@ export const groupLoad = () => {
       }
     }
   }
+}
+
+// addGroup
+const setModal = () => {
+  document.querySelector('.group_add-page').showModal()
+}
+
+export const openPageModal = () => {
+  setModal()
+}
+
+export const closePageModal = () => {
+  document.querySelector('.group_add-page').close()
+}
+
+
+
+
+
+const changePage = (id) => {
+  window.location.href = `/page/${id}`
+}
+
+
+export const createShowPageEvents = () => {
+  const pages = document.querySelectorAll('.group_page')
+  
+  pages.forEach(el => {
+    el.addEventListener('click', () => changePage(el.id))
+  })
 }

@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.link {
+  text-decoration: none;
+  color: colour(link);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

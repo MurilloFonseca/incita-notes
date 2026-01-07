@@ -1,0 +1,44 @@
+@use '../abstracts' as *;
+
+.page {
+  @include body;
+  align-items: center;
+
+  .hr {
+    width: 97%;
+    margin-top: 10px;
+    background-color: colour(accent, light);
+
+    border: {
+      color: colour(accent, light);
+      style: solid;
+      radius: 50%;
+    }
+
+    &.dark {
+      border-color: colour(accent, dark);
+      background-color: colour(accent, dark);
+    }
+  }
+}
+
+.page-main {
+  @include txt;
+
+  width: 72vw;
+  background-color: colour(text-field, light);
+  display: flex;
+  justify-content: center;
+
+  &.push {
+    margin-left: 23.5vw;
+  }
+
+  &.dark {
+    background-color: colour(text-field, dark);
+  }
+
+  #page-title {
+    display: none;
+  }
+}

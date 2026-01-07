@@ -28,15 +28,10 @@
     &.dark {
       @include btn(#000, $dark-secondary-colour);
     }
-
-    &_light, &_dark {
-      @include hideable;
-    }
   }
 
   &_menu {
     @include icon-btn;
-    @include hideable;
 
     height: 30px;
     width: 30px;
@@ -44,6 +39,3 @@
     margin-left: 30px;
   }
 }
-
-
-

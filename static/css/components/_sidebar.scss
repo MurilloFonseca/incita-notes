@@ -1,0 +1,19 @@
+@use '../abstracts' as *;
+
+.sidebar {
+  width: 25vw;
+  height: 100vh;
+  align-self: baseline;
+  z-index: 1;
+  margin-top: -12px;
+
+  background-color: colour(secondary, light);
+
+  &.dark {
+    background-color: colour(secondary, dark);
+  }
+
+  .body {
+    margin-top: 20px;
+  }
+}

@@ -31,19 +31,11 @@
 
     &_chevron {
       @include icon-btn;
-
-      &_right, &_down {
-        @include hideable;
-      }
     }
 
     &_add {
       @include icon-btn;
     }
-  }
-
-  &_body {
-    @include hideable;
   }
 
   &_page {
@@ -55,6 +47,8 @@
     padding-left: 20px;
     padding-right: 5px;
     height: 7vh;
+
+    cursor: pointer;
 
     &.dark {
       border-bottom-color: $dark-bg-colour;

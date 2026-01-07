@@ -28,7 +28,7 @@
 ;; Main
 (defroute "/" ()
   (if (get-session :id)
-      (redirect "/debug")
+      (redirect "/page")
       (redirect "/login")))
 
 ;; Login
@@ -37,6 +37,8 @@
 
 (defroute ("/login" :method :POST) (&key |email| |password|)
   (make-login |email| |password|))
+
+
 
 ;; Register
 (defroute "/register" ()
@@ -50,6 +52,19 @@
 (defroute "/page" ()
   (default-page))
 
+(defroute "/page/:id" (&key id)
+  (id-page id))
+
+(defroute ("/update-name" :method :PUT) (&key |name|)
+  (format t "|name|: ~a~&" |name|)
+  (save-name |name|))
+
+(defroute ("/logout" :method :POST) ()
+  (logout))
+
+(defroute ("/add-page" :method :POST) (&key |title|)
+  (add-page |title|))
+
 
 
 
@@ -61,11 +76,11 @@
 (defroute "/debug" ()
   (let ((ses-id (gethash :id *session*))
         (ses-name (gethash :name *session*))
-        (ses-email (gethash :email *session*)))
-    (render "debug.html" (list :id ses-id :name ses-name :email ses-email))))
+        (ses-email (gethash :email *session*))
+        (ses-page (gethash :page *session*)))
+    (render "debug.html" (list :id ses-id :name ses-name :email ses-email :page_id ses-page))))
 
-(defroute ("/update-name" :method :PUT) (&key |name|)
-  (save-name |name|))
+
 
 ;;
 ;; Error pages

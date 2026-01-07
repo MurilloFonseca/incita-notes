@@ -1,0 +1,9 @@
+<div class="group-body" x-show="showGroup">
+
+  {% for page in pages %}
+
+    {% include "components/group/group-page.html" :page_id page.id :page_title page.title %}
+  
+  {% endfor %}
+
+</div>

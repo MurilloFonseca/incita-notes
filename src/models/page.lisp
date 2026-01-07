@@ -7,7 +7,9 @@
            :page-user
            :page-title
            
-           :user-pages))
+           :user-pages
+           :create-user-page
+           :get-page-by-id))
 (in-package :incita-notes.models.page)
 
 (defclass page ()
@@ -23,4 +25,8 @@
   (select-dao '+user-page+ 
     (where (:= :user-id user-id))))
 
+(defun create-user-page (title id)
+  (create-dao '+user-page+ :title title :user-id id))
 
+(defun get-page-by-id (id)
+  (find-dao '+user-page+ :id id))

@@ -1,0 +1,29 @@
+@use 'sass:math';
+
+@mixin base-txt {
+  font-family: 'arial';
+}
+
+@mixin txt {
+  @include base-txt;
+
+  font-size: math.div(7, 8) * 1rem;
+}
+
+@mixin subtitle {
+  @include base-txt;
+
+  font-size: 1rem;
+}
+
+@mixin input-txt {
+  @include base-txt;
+
+  font-size: math.div(5, 4) * 1rem;
+}
+
+@mixin title {
+  @include base-txt;
+
+  font-size: math.div(13, 8) * 1rem;
+}

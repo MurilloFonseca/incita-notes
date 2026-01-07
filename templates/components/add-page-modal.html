@@ -1,0 +1,7 @@
+<dialog class="add-page" x-show="open" x-cloak x-htmldialog>
+  <form hx-post="/add-page" hx-target=".group-body" hx-swap="beforeend" class="form">
+    {% include "components/input-field.html" :input_id "title" :input_label "Nome:" :input_auto "off" :input_type "text" %}
+    <button type="button" class="cancel" @click="open = false">Cancel</button>
+    <button type="submit" class="confirm" @click="open = false">Add</button>
+  </form>
+</dialog>

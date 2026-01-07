@@ -1,0 +1,20 @@
+<div class="group-top" :class="{'dark': darkmode}">
+
+  <div class="left">
+    <button class="chevron" @click="showGroup = !showGroup" :class="{'dark': darkmode}">
+      <span class="chevron_down" x-show="showGroup"> {% include "svg/keyboard-arrow-down.svg" %} </span>
+      <span class="chevron_right" x-show="!showGroup" > {% include "svg/keyboard-arrow-right.svg" %} </span>
+    </button>
+    <span class="title"> {{ group_title }} </span>
+  </div>
+
+  <div class="right" x-data="{ open: false }">
+    <button class="add" :class="{'dark': darkmode}" @click="open = true">
+      {% include "svg/add.svg" %}
+    </button>
+
+    {% include "components/add-page-modal.html" %}
+
+  </div>
+
+</div>

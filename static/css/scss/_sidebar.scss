@@ -1,8 +1,6 @@
 @use 'var' as *;
 
 .sidebar {
-  @include hideable;
-
   background-color: $secondary-colour;
 
   width: 25vw;
@@ -54,6 +52,39 @@
 
   &_body {
     margin-top: 20px;
+  }
+
+  &_footer {
+    justify-content: end;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    width: 25vw;
+    height: 6vh;
+    bottom: 0;
+  }
+
+  &_logout {
+    @include icon-btn;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    margin-right: 15px;
+
+    &_txt {
+      @include txt(16px);
+    }
+
+    &_icon {
+      display: flex;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 

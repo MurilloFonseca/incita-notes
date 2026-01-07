@@ -3,9 +3,15 @@
 {% block title %} Notes {% endblock title %}
 
 {% block content %}
-<div class="page">
-  {% include "layouts/header/header.html" :show_sidebar t :page_title page_title %}
-  <hr class="page_hr">
+
+{% if page_id %} 
+  <meta hx-get="/page/{{page_id}}" hx-trigger="load" hx-target=".page-main" hx-swap-oob="true" hx-swap="outerHTML">
+{% endif %}
+
+<div class="page" x-data="{sidebarOpen: $persist(true)}">
+  {% include "components/header.html" :show_sidebar t %}
+  <hr class="hr" :class="{'dark': darkmode}">
   {% include "page/main.html" %}
 </div>
+
 {% endblock content %}

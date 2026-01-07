@@ -1,0 +1,41 @@
+@use '../abstracts' as *;
+
+.group-top {
+  @include body(row);
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 3px;
+  padding-bottom: 6px;
+
+  border-bottom: 2px solid colour(accent, light);
+
+  &.dark {
+    border-bottom-color: colour(accent, dark);
+  }
+
+  .left {
+    @include body(row, $gap: 15px);
+
+    align-items: center;
+    padding-left: 10px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+  }
+
+  .chevron {
+    @include icon-btn;
+  }
+
+  .add {
+    @include icon-btn;
+  }
+
+  .title {
+    @include subtitle;
+  }
+}

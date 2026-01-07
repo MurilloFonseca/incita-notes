@@ -20,7 +20,6 @@ export const sidebarLoad = () => {
   }
 }
 
-
 // EditName
 const setEditName = () => {
   const nameInput = document.querySelector('.sidebar_name')
@@ -37,8 +36,6 @@ export const editNameEvent = () => {
 
 export const saveNameEvent = async () => {
   const name = document.querySelector('.sidebar_name').value
-
-  console.log(name);
 
   await fetch('/update-name', {
     method: 'PUT',

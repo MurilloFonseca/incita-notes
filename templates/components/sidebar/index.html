@@ -1,0 +1,19 @@
+<div class="sidebar" x-show="sidebarOpen" :class="{'dark': darkmode}">
+
+  {% include "components/sidebar/sidebar-top.html" %}
+  
+  <div class="body">
+
+    {% include "components/group/index.html" :group_title "personal" :group_id "personal" %}
+    
+    {% for group in groups %}
+
+      {% include "components/group/index.html" :group_title {{group.title}} :pages {{group.pages}} :group_id {{group.id}} only %}
+
+    {% endfor %}
+
+  </div>
+
+  {% include "components/sidebar/sidebar-bottom.html" %}
+
+</div>

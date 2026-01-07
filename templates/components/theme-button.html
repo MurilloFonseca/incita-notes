@@ -1,0 +1,4 @@
+<button class="theme-button" @click="darkmode = !darkmode" :class="{'dark': darkmode}">
+  <span class="btn-dark" x-show="darkmode"> {% include "svg/dark-mode.svg" %}  </span>
+  <span class="btn-light" x-show="!darkmode"> {% include "svg/light-mode.svg" %} </span>
+</button>

@@ -1,0 +1,27 @@
+@use 'sass:map';
+
+$colours: (
+  light: (
+    background: #f8fafd,
+    text: #161616,
+    accent: #d1d9e0,
+    text-field: #ffffff,
+    secondary: #f0f4f9,
+  ),
+  dark: (
+    background: #131314,
+    text: #f0f6fc,
+    accent: #3d444d,
+    text-field: #282A2C,
+    secondary: #1e1f20,
+  ),
+  common: (
+    light-text: #eeeeee,
+    link: #4493F8,
+    button: #264c56,
+  ),
+);
+
+@function colour($key, $type: common) {
+  @return map.get(map.get($colours, $type), $key)
+}
