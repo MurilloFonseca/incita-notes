@@ -7,6 +7,8 @@
                 :+user+)
   (:import-from :incita-notes.models.page
                 :+user-page+)
+  (:import-from :incita-notes.models.block
+                :+user-block+)
   (:import-from :mito
                 :connect-toplevel
                 :disconnect-toplevel
@@ -16,10 +18,12 @@
            :close-connection))
 (in-package :incita-notes.db)
 
+(defparameter *tables* '(+user+ +user-page+ +user-block+))
+
 (defun db-init ()
   (apply #'connect-toplevel (config :database))
-  (mapcar #'ensure-table-exists '(+user+ +user-page+))
-  (mapcar #'migrate-table '(+user+ +user-page+)))
+  (mapcar #'ensure-table-exists *tables*)
+  (mapcar #'migrate-table *tables*))
 
 (defun close-connection ()
   (disconnect-toplevel))

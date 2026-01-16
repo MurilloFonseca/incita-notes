@@ -23,10 +23,9 @@
 
 (defun make-login (email password)
   (multiple-value-bind (auth-p user) (auth-user email password)
-    (if auth-p
+    (if (not auth-p) (redirect "/login")
       (progn (set-session :id (object-id user))
              (set-session :email (user-email user))
              (set-session :name (user-name user))
-             (redirect "/page"))
-      (redirect "/login"))))
+             (redirect "/page")))))
 

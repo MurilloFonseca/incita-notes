@@ -12,12 +12,12 @@
            :get-page-by-id))
 (in-package :incita-notes.models.page)
 
-(defclass page ()
+(defclass base-page ()
   ((title :col-type (:varchar 60)
           :accessor page-title))
   (:metaclass dao-table-mixin))
 
-(deftable +user-page+ (page)
+(deftable +user-page+ (base-page)
   ((user :col-type +user+
          :accessor page-user)))
 
@@ -28,5 +28,6 @@
 (defun create-user-page (title id)
   (create-dao '+user-page+ :title title :user-id id))
 
-(defun get-page-by-id (id)
-  (find-dao '+user-page+ :id id))
+(defun get-page-by-id (user-id page-id)
+  (find-dao '+user-page+ :id page-id :user-id user-id))
+

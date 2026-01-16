@@ -75,6 +75,7 @@ body {
   flex-direction: column;
   gap: 0;
   align-items: center;
+  height: 100vh;
 }
 .page .hr {
   width: 97%;
@@ -90,18 +91,110 @@ body {
 }
 
 .page-main {
-  font-family: "arial";
-  font-size: 0.875rem;
-  width: 72vw;
-  background-color: #ffffff;
   display: flex;
-  justify-content: center;
-}
-.page-main.push {
-  margin-left: 23.5vw;
+  flex-direction: column;
+  gap: 5px;
+  height: 88%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 72vw;
+  justify-content: baseline;
+  align-items: center;
+  background-color: #ffffff;
 }
 .page-main.dark {
   background-color: #282A2C;
+}
+.page-main .main-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "arial";
+  font-size: 0.875rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.page-main .bottom {
+  width: 100%;
+  min-height: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-main .bottom .add-btn {
+  font-family: "arial";
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #161616;
+  fill: #161616;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 7px;
+  padding-left: 7px;
+  margin-top: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50px;
+  border-color: #d1d9e0;
+}
+.page-main .bottom .add-btn:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: hsl(0, 0%, -6.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.page-main .bottom .add-btn:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: hsl(0, 0%, -14.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.page-main .bottom .add-btn.dark {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #f0f6fc;
+  fill: #f0f6fc;
+}
+.page-main .bottom .add-btn.dark:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: rgb(176.25, 207.75, 239.25);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.page-main .bottom .add-btn.dark:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: rgb(142.25, 187.35, 232.45);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.page-main .bottom .add-btn.dark {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  border-color: #3d444d;
+}
+.page-main::after {
+  content: "";
+  display: block;
+  min-height: 40vh;
+}
+.page-main.push {
+  margin-left: 23.5vw;
 }
 .page-main #page-title {
   display: none;
@@ -672,4 +765,175 @@ body {
 .group-body .title {
   font-family: "arial";
   font-size: 0.875rem;
+}
+
+.block {
+  font-family: "arial";
+  font-size: 0.875rem;
+  width: 96%;
+  border: 0;
+  border-color: #d1d9e0;
+  border-radius: 10px;
+  border-style: none;
+  border-width: 2px;
+}
+.block.selected {
+  border-style: solid;
+}
+.block.dark {
+  border-color: #3d444d;
+}
+.block .area, .block .content {
+  width: 100%;
+  padding: 12px;
+  padding-top: 0;
+  background-color: inherit;
+  color: inherit;
+  border: 0;
+  resize: none;
+  field-sizing: content;
+}
+.block .area:focus, .block .content:focus {
+  outline: none !important;
+}
+.block .edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #161616;
+  fill: #161616;
+  padding: 0;
+  border: 0;
+}
+.block .edit:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: hsl(0, 0%, -6.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.block .edit:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: hsl(0, 0%, -14.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.block .edit.dark {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #f0f6fc;
+  fill: #f0f6fc;
+}
+.block .edit.dark:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: rgb(176.25, 207.75, 239.25);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.block .edit.dark:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: rgb(142.25, 187.35, 232.45);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.block .save {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #161616;
+  fill: #161616;
+  padding: 0;
+  border: 0;
+}
+.block .save:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: hsl(0, 0%, -6.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.block .save:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: hsl(0, 0%, -14.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.block .save.dark {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #f0f6fc;
+  fill: #f0f6fc;
+}
+.block .save.dark:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: rgb(176.25, 207.75, 239.25);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.block .save.dark:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: rgb(142.25, 187.35, 232.45);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.block .delete {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #161616;
+  fill: #161616;
+  padding: 0;
+  border: 0;
+}
+.block .delete:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: hsl(0, 0%, -6.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.block .delete:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: hsl(0, 0%, -14.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.block .delete.dark {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #f0f6fc;
+  fill: #f0f6fc;
+}
+.block .delete.dark:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: rgb(176.25, 207.75, 239.25);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.block .delete.dark:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: rgb(142.25, 187.35, 232.45);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.block .options {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: end;
+  padding-top: 8px;
+  padding-right: 8px;
+  margin-bottom: 0;
 }/*# sourceMappingURL=main.css.map */

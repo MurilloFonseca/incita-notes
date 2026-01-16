@@ -31,13 +31,13 @@
       (redirect "/page")
       (redirect "/login")))
 
+
 ;; Login
 (defroute "/login" ()
   (login-page))
 
 (defroute ("/login" :method :POST) (&key |email| |password|)
   (make-login |email| |password|))
-
 
 
 ;; Register
@@ -56,7 +56,6 @@
   (id-page id))
 
 (defroute ("/update-name" :method :PUT) (&key |name|)
-  (format t "|name|: ~a~&" |name|)
   (save-name |name|))
 
 (defroute ("/logout" :method :POST) ()
@@ -65,9 +64,17 @@
 (defroute ("/add-page" :method :POST) (&key |title|)
   (add-page |title|))
 
+(defroute ("/page/:page-id/add-block" :method :POST) (&key page-id)
+  (add-block page-id))
 
+(defroute ("/block-content/:id" :method :PUT) (&key id |content|)
+  (edit-content id |content|))
 
+(defroute ("/auto-save/:id" :method :PUT) (&key id |content|)
+  (auto-save id |content|))
 
+(defroute ("/delete-block/:id" :method :DELETE) (&key id)
+  (remove-block id))
 
 ;;
 ;; Other
@@ -79,7 +86,6 @@
         (ses-email (gethash :email *session*))
         (ses-page (gethash :page *session*)))
     (render "debug.html" (list :id ses-id :name ses-name :email ses-email :page_id ses-page))))
-
 
 
 ;;

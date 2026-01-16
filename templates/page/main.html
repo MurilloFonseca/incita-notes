@@ -1,4 +1,31 @@
 <div class="page-main" :class="{'push': sidebarOpen, 'dark': darkmode}">
-  <p class="title" id="page-title" hx-swap-oob="true"> {{page_title}} </p>
-  Lorem Ipsum
+
+  {% if page_title %}
+
+    <p class="title" id="page-title" hx-swap-oob="true"> {{page_title}} </p>
+
+    <div class="main-blocks">
+      {% if page_blocks %} 
+
+        {% for block in page_blocks %}
+          {% include "page/block.html" %}
+        {% endfor %}
+        
+      {% endif %}
+    </div>
+    
+
+
+    <div class="bottom" x-data="{showBtn: false}" @mouseenter="showBtn = true" @mouseleave="showBtn = false" :class="{'push': sidebarOpen}">
+      <button class="add-btn" x-show="showBtn" hx-post="/page/{{page_id}}/add-block" hx-swap="beforeend" hx-target=".main-blocks" :class="{'dark': darkmode}">
+        {% include "svg/add.svg" %} 
+        <span>Novo</span> 
+      </button>
+    </div>
+  
+  {% else %}
+
+    <p> Crie uma página para começar a editar </p>
+
+  {% endif %}
 </div>

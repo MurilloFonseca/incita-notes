@@ -1,0 +1,69 @@
+@use '../abstracts' as *;
+
+.block {
+  @include txt;
+  
+  width: 96%;
+
+  border: 0 {
+    color: colour(accent, light);
+    radius: 10px;
+    style: none;
+    width: 2px;
+  }
+
+  &.selected {
+    border-style: solid;
+  }
+
+  &.dark {
+    border-color: colour(accent, dark);
+  }
+
+  .area {
+    width: 100%;
+    padding: 12px {
+      top: 0;
+    };
+
+    background-color: inherit;
+    color: inherit;
+
+    border: 0;
+
+    resize: none;
+    field-sizing: content;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+  .content {
+    @extend .area;
+  }
+
+  .edit {
+    @include icon-btn;
+  }
+
+  .save {
+    @include icon-btn;
+  }
+
+  .delete {
+    @include icon-btn;
+  }
+
+  .options {
+    @include body(row, $gap: 6px);
+
+    justify-content: end;
+    padding: {
+      top: 8px;
+      right: 8px;
+    };
+
+    margin-bottom: 0;
+  }
+}

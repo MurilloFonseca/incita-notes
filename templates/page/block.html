@@ -1,0 +1,51 @@
+<div class="block" x-data="{selected: {{edit_state | default: false}}, editing: {{edit_state | default: false}}}" 
+                   @click="selected = true" 
+                   @dblclick="editing = true"
+                   @click.outside="selected = false; editing = false"
+                   :class="{'dark': darkmode, 'selected': selected}">
+
+  <form hx-put="/block-content/{{block.id}}" hx-target="closest .block" hx-swap="outerHTML">
+    <div class="options" x-show="selected && !editing">
+      <button type="button" class="edit" @click="editing = true" :class="{'dark': darkmode}">
+        {% include "svg/edit.svg" %}
+      </button>
+
+      <button class="delete" 
+              type="button" 
+              hx-delete="/delete-block/{{block.id}}" 
+              hx-target="closest .block" 
+              hx-swap="outerHTML" 
+              hx-params="none"
+              :class="{'dark': darkmode}">
+        {% include "svg/delete.svg" %}
+      </button>
+    </div>
+
+    <div class="options" x-show="editing">
+
+      <button class="delete" 
+              type="button" 
+              hx-delete="/delete-block/{{block.id}}" 
+              hx-target="closest .block" 
+              hx-swap="outerHTML" 
+              hx-params="none"
+              :class="{'dark': darkmode}">
+        {% include "svg/delete.svg" %}
+      </button>
+
+      <button type="submit" class="save" @click="editing = false" :class="{'dark': darkmode}">
+        {% include "svg/check.svg" %}
+      </button>
+    </div>
+
+    <article class="content markdown-body" x-show="!editing">{{block.compiled_content | safe}}</article>
+    <textarea hx-put="/auto-save/{{block.id}}" 
+              hx-target="previous .content" 
+              hx-swap="innerHTML" 
+              hx-trigger="keyup changed delay:500ms throttle:500ms" 
+              name="content" 
+              class="area markdown-body" 
+              x-show="editing" 
+              autofocus>{{block.raw_content}}</textarea>
+  </form>
+</div>

@@ -39,11 +39,10 @@
   (find-dao '+user+ :email email))
 
 (defun update-user (id &key name email pw)
-  (format t "id: ~a; name; ~a~&" id name)
-  (let ((user (find-dao `+user+ :id id)))
+  (let ((user (find-dao '+user+ :id id)))
     (when user
       (when name (setf (user-name user) name))
       (when email (setf (user-email user) email))
       (when pw (setf (password user) pw))
-      (save-dao user))))
+      (save-dao user) user)))
 

@@ -24,13 +24,13 @@
 
 (defun register-user (name email password)
   (let ((user (get-user-by-email email)))
-    (if user (redirect "/login")
-      (if (not (valid-password-p password)) (redirect "/register")
-        (let ((new-user (create-user name email password)))
-          (set-session :id (object-id new-user))
-          (set-session :email (user-email new-user))
-          (set-session :name (user-name new-user))
-          (redirect "/page"))))))
+    (cond (user (redirect "/login"))
+          ((not (valid-password-p password)) (redirect "/login"))
+          (t (let ((new-user (create-user name email password)))
+                (set-session :id (object-id new-user))
+                (set-session :email (user-email new-user))
+                (set-session :name (user-name new-user))
+                (redirect "/page"))))))
 
 
 

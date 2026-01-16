@@ -4,6 +4,8 @@
   @include body;
   align-items: center;
 
+  height: 100vh;
+
   .hr {
     width: 97%;
     margin-top: 10px;
@@ -23,19 +25,80 @@
 }
 
 .page-main {
-  @include txt;
+  @include body($gap: 5px);
+
+  height: 88%;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   width: 72vw;
+  justify-content: baseline;
+  align-items: center;
+  
   background-color: colour(text-field, light);
-  display: flex;
-  justify-content: center;
+  
+  &.dark {
+    background-color: colour(text-field, dark);
+  }
+  
+  .main-blocks {
+    @include body($gap: 10px);
+    @include txt;
+
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: {
+      top: 10px;
+      bottom: 10px;
+    }
+  }
+
+  .bottom {
+    width: 100%;
+    min-height: 4vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .add-btn {
+      @include txt;
+      @include icon-btn;
+      @include body(row, $gap: 5px);
+
+      padding: {
+        top: 5px;
+        bottom: 5px;
+        right: 7px;
+        left: 7px;
+      }
+      margin-top: 5px;
+
+      border: {
+        width: 2px;
+        style: solid;
+        radius: 50px;
+        color: colour(accent, light);
+      }
+
+      &.dark {
+        @include body(row, $gap: 5px);
+        border-color: colour(accent, dark); 
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    min-height: 40vh;
+  }
 
   &.push {
     margin-left: 23.5vw;
-  }
-
-  &.dark {
-    background-color: colour(text-field, dark);
   }
 
   #page-title {
