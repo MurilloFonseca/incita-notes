@@ -18,6 +18,7 @@
            :render-json))
 (in-package :incita-notes.view)
 
+
 (djula:add-template-directory *template-directory*)
 
 (defparameter *template-registry* (make-hash-table :test 'equal))
@@ -35,6 +36,7 @@
   (setf (getf (response-headers *response*) :content-type) "application/json")
   (encode-json object))
 
+
 ;;
 ;; Execute package definition
 
@@ -47,4 +49,6 @@
   (:import-from :caveman2
                 :url-for))
 
+
 (setf djula:*template-package* (find-package :incita-notes.djula))
+

@@ -1,0 +1,13 @@
+{% extends "layouts/default.html" %}
+
+{% block title %} Notes {% endblock title %}
+
+{% block content %}
+
+<div hx-ext="ws" ws-connect="/ws" class="page" x-data="{sidebarOpen: $persist(true)}">
+  {% include "components/header.html" :show-sidebar t %}
+  <hr class="hr" :class="{'dark': darkmode}">
+  {% include "page/main.html" %}
+</div>
+
+{% endblock content %}

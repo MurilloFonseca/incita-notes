@@ -1,8 +1,19 @@
-<div class="sidebar-bottom">
+<div class="sidebar-bottom" :class="{'dark': darkmode}">
+
+  <form class="form" x-data="{ open: false }">
+    <button type="button" class="add-group" :class="{'dark': darkmode}" @click="open = true">
+      <span class="icon"> {% include "svg/add.svg" %} </span>
+      <span class="text">Adicionar Grupo</span>
+    </button>
+
+    {% include "components/add-group-modal.html" %}
+  </form>
+
   <form action="/logout" method="POST" class="form">
     <button class="logout" :class="{'dark': darkmode}">
       <span class="text"> Logout </span>
       <span class="icon"> {% include "svg/logout.svg" %} </span>
     </button>
-  </form>   
+  </form>
+
 </div>

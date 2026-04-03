@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+
+.add-modal {
+  background-color: colour(background, light);
+  color: colour(text, light);
+
+  border: 0 {
+    radius: 10px;
+  }
+
+  &.dark {
+    background-color: colour(background, dark);
+    color: colour(text, dark);
+  }
+}

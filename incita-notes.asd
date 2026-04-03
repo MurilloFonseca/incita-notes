@@ -3,6 +3,7 @@
   :author "Murillo Perez da Fonseca"
   :license ""
   :depends-on ("clack"
+               "clack-handler-hunchentoot"
                "lack"
                "caveman2"
                "cl-ppcre"
@@ -38,13 +39,21 @@
                  (:file "db" :depends-on ("config" "models"))
                  (:file "config")
                  (:file "extensions")
+                 (:file "websocket")
                  (:file "utils" :depends-on ("models" "extensions"))
                  (:module "models"
                   :components ((:file "user")
-                               (:file "page")
-                               (:file "block")))
+                               (:file "group" :depends-on ("user"))
+                               (:file "member" :depends-on ("user" "group"))
+                               (:file "page" :depends-on ("user" "group"))
+                               (:file "block" :depends-on ("page"))
+                               (:file "permission" :depends-on ("user" "page" "block"))))
                  (:module "controllers" :depends-on ("models" "utils")
-                  :components ((:file "login")
-                               (:file "register")
-                               (:file "page"))))))
+                  :components ((:file "middlewares")
+                               (:file "user")
+                               (:file "group")
+                               (:file "member")
+                               (:file "page")
+                               (:file "block")
+                               (:file "permission"))))))
   :description "Aplicativo de notas")

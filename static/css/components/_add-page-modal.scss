@@ -1,0 +1,49 @@
+@use '../abstracts' as *;
+
+.form {
+  @include body($gap: 10px);
+
+  .bottom {
+    @include body(row, $gap: 10px);
+
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .confirm {
+    @include txt;
+    @include btn(colour(light-text), colour(button));
+
+    padding: 8px;
+    margin-top: 5px;
+
+    width: 60px;
+    
+    border: 0 {
+      radius: 5px
+    }
+  }
+
+  .cancel {
+    @include txt;
+    @include btn(colour(text, light), colour(background, light));
+
+    padding: 6px;
+    margin-top: 5px;
+
+    width: 60px;
+
+    border: {
+      radius: 5px;
+      width: 2px;
+      style: solid;
+      color: colour(accent, light);
+    }
+
+    &.dark {
+      @include btn(colour(text, dark), colour(background, dark));
+      border-color: colour(accent, dark);
+    }
+  }
+}

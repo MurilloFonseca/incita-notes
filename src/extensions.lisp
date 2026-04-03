@@ -1,4 +1,5 @@
 (in-package :3bmd-grammar)
+
 (defrule tickbox (and #\[ (or #\x #\X #\space) #\]) (:text t))
 
 (defrule bullet-with-tick (and (! horizontal-rule) nonindent-space
@@ -49,8 +50,6 @@
                         :remove-empty-subseqs t))))))
 
 (in-package :3bmd)
-
-
 
 (defmethod print-tagged-element ((tag (eql :list-item)) stream rest)
   (let ((has-tick (caar rest))

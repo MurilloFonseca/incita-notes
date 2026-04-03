@@ -2,28 +2,38 @@
 (defpackage incita-notes.db
   (:use :cl)
   (:import-from :incita-notes.config
-                :config)
+                :config
+                :*database-directory*)
   (:import-from :incita-notes.models.user
-                :+user+)
+                :users)
   (:import-from :incita-notes.models.page
-                :+user-page+)
+                :user_pages
+                :group_pages)
   (:import-from :incita-notes.models.block
-                :+user-block+)
+                :user_blocks
+                :group_blocks)
+  (:import-from :incita-notes.models.group
+                :groups)
+  (:import-from :incita-notes.models.member
+                :members)
+  (:import-from :incita-notes.models.permission
+                :permissions)
   (:import-from :mito
                 :connect-toplevel
                 :disconnect-toplevel
-                :ensure-table-exists
-                :migrate-table)
-  (:export :db-init
-           :close-connection))
+                :generate-migrations)
+  (:export :open-connection
+           :migrate
+           :close-connection
+           :migrate))
 (in-package :incita-notes.db)
 
-(defparameter *tables* '(+user+ +user-page+ +user-block+))
+(defun migrate ()
+  (generate-migrations *database-directory*)
+  (mito:migrate *database-directory*))
 
-(defun db-init ()
-  (apply #'connect-toplevel (config :database))
-  (mapcar #'ensure-table-exists *tables*)
-  (mapcar #'migrate-table *tables*))
+(defun open-connection ()
+  (apply #'connect-toplevel (config :database)))
 
 (defun close-connection ()
   (disconnect-toplevel))

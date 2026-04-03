@@ -1,10 +1,32 @@
 {% extends "layouts/default.html" %}
 
 {% block content %}
+
+<div hx-ext="ws" ws-connect="/ws">
+
+
+
 <p>
   id: {{id}} <br>
   email: {{email}} <br>
   name: {{name}} <br>
-  page: {{page_id}} <br>
+  page: {{page-id}} <br>
 </p>
+
+<form ws-send>
+  <input name="type" type="hidden" value="teste">
+  <input type="text" name="lorem">
+  <input type="text" name="ipsum">
+  <button type="submit">Enviar</button>
+</form>
+
+<div id="ws-test"></div>
+
+<div id="answer" hx-swap-oob="true"></div>
+
+
+</div>
+
+
+
 {% endblock content %}

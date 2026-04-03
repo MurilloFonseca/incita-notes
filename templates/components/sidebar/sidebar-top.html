@@ -4,7 +4,7 @@
   </button>
 
   <div class="right" x-data="{ editing: false }">
-    <form class="form" hx-put="/update-name" hx-target=".username">
+    <form class="form" hx-put="/user" hx-target=".username">
       <input type="text" value="{{username}}" class="username" name="name" :readonly="!editing">
       <button type="button" class="edit" :class="{'dark': darkmode}" x-show="!editing" @click="editing = true"> {% include "svg/edit.svg" %} </button>
       <button type="submit" class="confirm" :class="{'dark': darkmode}" x-show="editing" @click="editing = false"> {% include "svg/check.svg" %} </button>

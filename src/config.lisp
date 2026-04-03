@@ -6,6 +6,7 @@
   (:export :*application-root*
            :*static-directory*
            :*template-directory*
+           :*database-directory*
            :load-config
            :config
            :development-p
@@ -15,6 +16,7 @@
 (defparameter *application-root* (asdf:system-source-directory :incita-notes))
 (defparameter *static-directory* (merge-pathnames #P"static/" *application-root*))
 (defparameter *template-directory* (merge-pathnames #P"templates/" *application-root*))
+(defparameter *database-directory* (merge-pathnames #P"db/" *application-root*))
 
 (defvar *config* (make-hash-table :test #'equal))
 

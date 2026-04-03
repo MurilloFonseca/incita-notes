@@ -5,8 +5,8 @@
 {% block form %} 
 
 <form action="/login" method="POST" class="form">
-  {% include "components/input-field.html" :input_id "email" :input_label "Email:" %}
-  {% include "components/input-field.html" :input_id "password" :input_auto "off" :input_label "Senha:" %}
+  {% include "components/input-field.html" :input-id "email" :input-label "Email:" %}
+  {% include "components/input-field.html" :input-id "password" :input-auto "off" :input-label "Senha:" %}
   <button class="btn" type="submit"> Entrar </button>
 </form>
 

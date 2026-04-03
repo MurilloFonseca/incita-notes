@@ -10,3 +10,5 @@
 .env
 .vscode
 *.css.map
+
+db/migrations/*.sql

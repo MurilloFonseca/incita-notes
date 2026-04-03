@@ -12,7 +12,9 @@
   (:import-from :incita-notes.config
                 :config
                 :production-p
-                :*static-directory*))
+                :*static-directory*)
+  (:import-from :incita-notes.websocket
+                :websocket-middleware))
 (in-package :incita-notes.app)
 
 (builder
@@ -32,4 +34,5 @@
        (lambda (env)
          (let ((datafly:*trace-sql* t))
            (funcall app env)))))
+ #'websocket-middleware
  *web*)

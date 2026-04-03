@@ -1,9 +1,9 @@
 <div class="input-field">
-  <label for="{{input_id}}" class="label"> {{input_label}} </label>
-    <input type="{% firstof input_type input_id %}" 
-      id="{{ input_id }}" 
+  <label for="{{input-id}}" class="label"> {{input-label}} </label>
+    <input type="{% firstof input-type input-id %}" 
+      id="{{ input-id }}" 
       class="input"
-      name="{% firstof input_name input_id %}" 
-      autocomplete="{% firstof input_auto input_id %}"
+      name="{% firstof input-name input-id %}" 
+      autocomplete="{% firstof input-auto input-id %}"
       :class="{'dark': darkmode}">
 </div>

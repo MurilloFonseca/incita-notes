@@ -200,6 +200,17 @@ body {
   display: none;
 }
 
+.add-modal {
+  background-color: #f8fafd;
+  color: #161616;
+  border: 0;
+  border-radius: 10px;
+}
+.add-modal.dark {
+  background-color: #131314;
+  color: #f0f6fc;
+}
+
 .input-field {
   display: flex;
   flex-direction: column;
@@ -395,6 +406,8 @@ body {
 }
 .sidebar .body {
   margin-top: 20px;
+  height: 82vh;
+  overflow-y: auto;
 }
 
 .sidebar-top {
@@ -515,10 +528,15 @@ body {
   display: flex;
   position: absolute;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   width: 25vw;
   height: 6vh;
   bottom: 0;
+  background-color: inherit;
+  border-top: 2px solid #d1d9e0;
+}
+.sidebar-bottom.dark {
+  border-top-color: #3d444d;
 }
 .sidebar-bottom .logout {
   display: flex;
@@ -571,6 +589,61 @@ body {
   fill: rgb(176.25, 207.75, 239.25);
 }
 .sidebar-bottom .logout.dark {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.sidebar-bottom .add-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #161616;
+  fill: #161616;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+}
+.sidebar-bottom .add-group:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: hsl(0, 0%, -6.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.sidebar-bottom .add-group:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: hsl(0, 0%, -14.3725490196%);
+  fill: hsl(0, 0%, -6.3725490196%);
+}
+.sidebar-bottom .add-group.dark {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #f0f6fc;
+  fill: #f0f6fc;
+}
+.sidebar-bottom .add-group.dark:hover {
+  background-color: hsla(0, 0%, -15%, 0);
+  color: rgb(176.25, 207.75, 239.25);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.sidebar-bottom .add-group.dark:active {
+  background-color: hsla(0, 0%, -23%, 0);
+  color: rgb(142.25, 187.35, 232.45);
+  fill: rgb(176.25, 207.75, 239.25);
+}
+.sidebar-bottom .add-group.dark {
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -936,4 +1009,98 @@ body {
   padding-top: 8px;
   padding-right: 8px;
   margin-bottom: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form .bottom {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+  justify-content: end;
+}
+.form .confirm {
+  font-family: "arial";
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: #264c56;
+  color: #eeeeee;
+  fill: #eeeeee;
+  padding: 8px;
+  margin-top: 5px;
+  width: 60px;
+  border: 0;
+  border-radius: 5px;
+}
+.form .confirm:hover {
+  background-color: rgb(30.185483871, 60.3709677419, 68.314516129);
+  color: rgb(225.25, 225.25, 225.25);
+  fill: rgb(225.25, 225.25, 225.25);
+}
+.form .confirm:active {
+  background-color: rgb(22.3709677419, 44.7419354839, 50.6290322581);
+  color: rgb(212.5, 212.5, 212.5);
+  fill: rgb(225.25, 225.25, 225.25);
+}
+.form .cancel {
+  font-family: "arial";
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafd;
+  color: #161616;
+  fill: #161616;
+  padding: 6px;
+  margin-top: 5px;
+  width: 60px;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #d1d9e0;
+}
+.form .cancel:hover {
+  background-color: rgb(228.1666666667, 235.8333333333, 247.3333333333);
+  color: rgb(9.25, 9.25, 9.25);
+  fill: rgb(9.25, 9.25, 9.25);
+}
+.form .cancel:active {
+  background-color: rgb(208.3333333333, 221.6666666667, 241.6666666667);
+  color: hsl(0, 0%, -1.3725490196%);
+  fill: rgb(9.25, 9.25, 9.25);
+}
+.form .cancel.dark {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: #131314;
+  color: #f0f6fc;
+  fill: #f0f6fc;
+  border-color: #3d444d;
+}
+.form .cancel.dark:hover {
+  background-color: rgb(6.5769230769, 6.5769230769, 6.9230769231);
+  color: rgb(218.75, 233.25, 247.75);
+  fill: rgb(218.75, 233.25, 247.75);
+}
+.form .cancel.dark:active {
+  background-color: hsl(240, 2.5641025641%, -2.3529411765%);
+  color: rgb(197.5, 220.5, 243.5);
+  fill: rgb(218.75, 233.25, 247.75);
 }/*# sourceMappingURL=main.css.map */

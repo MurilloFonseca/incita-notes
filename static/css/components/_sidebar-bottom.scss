@@ -4,10 +4,17 @@
   display: flex;
   position: absolute;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   width: 25vw;
   height: 6vh;
   bottom: 0;
+  background-color: inherit;
+  
+  border-top: 2px solid colour(accent, light);
+
+  &.dark {
+    border-top-color: colour(accent, dark);
+  }
 
   .logout {
     @include icon-btn;
@@ -16,6 +23,19 @@
     justify-content: center;
     align-items: center;
     margin-right: 15px;
+
+    &.dark {
+      @include body(row, $gap: 10px);
+    }
+  }
+
+  .add-group {
+    @include icon-btn;
+    @include body(row, $gap: 10px);
+
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
 
     &.dark {
       @include body(row, $gap: 10px);

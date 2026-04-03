@@ -4,11 +4,11 @@
   
   <div class="body">
 
-    {% include "components/group/index.html" :group_title "personal" :group_id "personal" %}
+    {% include "components/group/index.html" :group-name "personal" :group-id "personal" %}
     
     {% for group in groups %}
 
-      {% include "components/group/index.html" :group_title {{group.title}} :pages {{group.pages}} :group_id {{group.id}} only %}
+      {% include "components/group/index.html" :group-name group.name :pages group.pages :group-id group.id only %}
 
     {% endfor %}
 

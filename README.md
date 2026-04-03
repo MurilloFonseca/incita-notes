@@ -158,6 +158,17 @@ Ou no REPL:
 
 A aplicação estará disponível em `http://localhost:5000`
 
+### Fazer migrações
+
+No REPL:
+```lisp
+(incita-notes.db:migrate)
+```
+Alternativamente, se desejar fazer as migrações ao inciar a aplicação:
+```lisp
+(incita-notes:start :migrate t)
+```
+
 ### Parar a aplicação
 
 No REPL:

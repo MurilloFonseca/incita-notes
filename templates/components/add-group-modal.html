@@ -1,7 +1,7 @@
 {% extends "layouts/add-modal.html" %}
 
 {% block form %}
-  <form hx-post="/page" hx-target=".group-body" hx-swap="beforeend" class="form">
+  <form hx-post="" hx-target="" hx-swap="" class="form">
     {% include "components/input-field.html" :input-id "title" :input-label "Nome:" :input-auto "off" :input-type "text" %}
     <div class="bottom">
       <button type="button" class="cancel" :class="{'dark': darkmode}" @click="open = false">Cancel</button>

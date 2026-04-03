@@ -1,12 +1,12 @@
 <header class="header">
-  {% if show_sidebar %}
+  {% if show-sidebar %}
     <button class="menu" :class="{'dark': darkmode}" x-show="!sidebarOpen" x-cloak @click="sidebarOpen = true">
       {% include "svg/menu.svg" %}
     </button>
     {% include "components/sidebar/index.html" %}
   {% endif %}
 
-  <p class="title" id="page-title"> {{ page_title | default: "" }} </p>
+  <p class="title" id="page-title"> {{ page-title | default: "" }} </p>
 
   {% include "components/theme-button.html" %}
 </header>

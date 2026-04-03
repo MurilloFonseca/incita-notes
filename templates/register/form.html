@@ -4,10 +4,10 @@
 
 {% block form %}
 
-<form action="/register" method="POST" class="form">
-  {% include "components/input-field.html" :input_id "name" :input_type "text" :input_label "Nome:" %}
-  {% include "components/input-field.html" :input_id "email" :input_label "Email:" %}
-  {% include "components/input-field.html" :input_id "password" :input_auto "off" :input_label "Senha:" %}
+<form action="/user" method="POST" class="form">
+  {% include "components/input-field.html" :input-id "name" :input-type "text" :input-label "Nome:" %}
+  {% include "components/input-field.html" :input-id "email" :input-label "Email:" %}
+  {% include "components/input-field.html" :input-id "password" :input-auto "off" :input-label "Senha:" %}
   <button class="btn" type="submit"> Cadastrar </button>
 </form>
 
